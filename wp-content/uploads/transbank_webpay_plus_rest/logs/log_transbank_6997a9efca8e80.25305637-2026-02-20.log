@@ -1,0 +1,5 @@
+2026-02-20 01:53:14 +00:00 > INFO > [Oneclick] Inicio de inscripción [] []
+2026-02-20 01:53:14 +00:00 > INFO > ORDER_ID: 343 [] []
+2026-02-20 01:53:14 +00:00 > INFO > INPUT: {"username":"wc:6997be8a0d757:2","email":"jmlopez@llmmfood.cl","returnUrl":"https:\/\/restaurantcachoecabra.cl\/?wc-api=wc_gateway_transbank_oneclick_return_payments"} => RESPONSE: {"token":"01ab2601360e876aabec2bae24654b32847fc20e8c592382b68dce05f98377d2","urlWebpay":"https:\/\/webpay3gint.transbank.cl\/webpayserver\/bp_multicode_inscription.cgi"} [] []
+2026-02-20 01:53:14 +00:00 > INFO > [Oneclick] Respuesta de inscripción:  [] []
+2026-02-20 01:53:14 +00:00 > INFO > {"token":"01ab2601360e876aabec2bae24654b32847fc20e8c592382b68dce05f98377d2","urlWebpay":"https:\/\/webpay3gint.transbank.cl\/webpayserver\/bp_multicode_inscription.cgi"} [] []

@@ -1,0 +1,73 @@
+.seatreg-tabs-content {
+    .add-modal {
+        h5 {
+            margin-bottom: 0.5rem;
+        }
+        .add-modal-input-wrap {
+            margin-bottom: 12px;
+
+            .seat-id-search {
+                vertical-align: middle;
+                padding-top: 20px;
+                margin-left: 4px;
+                cursor: pointer;
+            }
+        }
+        .modal-custom {
+            margin-bottom: 12px;
+        }
+        .add-modal-calendar-date {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .fa {
+                margin-right: 8px;
+            }
+        }
+        .modal-body-items {
+            display: flex;
+            overflow-x: auto;
+    
+            .modal-body-item:not(:last-child) {
+                margin-right: 24px;
+            }
+            .modal-body-item {
+                .input-error {
+                    color: red;
+                }
+            }
+        }
+        .bottom-action {
+            margin-top: 24px;
+
+            .seat-operations {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 12px;
+
+                .seat-operation {
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .seat-operation:first-child {
+                    margin-right: 12px;
+                }
+            }
+
+            .fa-plus-circle {
+                color: #61B329;
+            }
+            .fa-minus-circle {
+                color: red;
+            }
+            .bottom-action-item {
+                cursor: pointer;
+                text-align: center;
+                margin-bottom: 12px;
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "seatreg",
+  "version": "1.0.4",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "~2.27.10",
+    "gulp-autoprefixer": "~2.1.0",
+    "gulp-concat": "~2.5.2",
+    "gulp-imagemin": "~2.2.1",
+    "gulp-livereload": "~3.8.1",
+    "gulp-plumber": "~1.0.0",
+    "gulp-ruby-sass": "~1.0.0-alpha.3",
+    "gulp-uglify": "~1.1.0"
+  },
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^9.0.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.39.0"
+  },
+  "scripts": {
+    "registration-scripts": "gulp registration-scripts",
+    "registration-styles": "gulp registration-styles",
+    "admin-styles": "gulp admin-styles",
+    "builder-styles": "gulp builder-styles",
+    "watch": "gulp watch"
+  },
+  "author": "Siim Kirjanen",
+  "license": "GPLv2 or later"
+}

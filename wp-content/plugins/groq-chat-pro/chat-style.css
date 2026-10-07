@@ -1,0 +1,85 @@
+/* chat-style.css */
+#groq-chat-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    z-index: 9999;
+    border: 1px solid #e0e0e0;
+}
+
+#groq-chat-header {
+    background: #2271b1; /* Color WordPress o tu marca */
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+}
+
+#groq-chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.bot-msg, .user-msg {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.bot-msg {
+    background: #e9e9eb;
+    color: #333;
+    align-self: flex-start;
+}
+
+.user-msg {
+    background: #2271b1;
+    color: white;
+    margin-left: auto;
+    text-align: right;
+}
+
+#groq-chat-input-area {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    background: #fff;
+}
+
+#groq-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+#groq-send-btn {
+    background: transparent;
+    border: none;
+    color: #2271b1;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.groq-alert {
+    padding: 20px;
+    background: #ffe6e6;
+    color: #d63031;
+    border: 1px solid #ffcccc;
+    border-radius: 5px;
+}

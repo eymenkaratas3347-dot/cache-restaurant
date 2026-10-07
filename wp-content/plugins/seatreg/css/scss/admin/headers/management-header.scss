@@ -1,0 +1,65 @@
+.seatreg-tabs-content .management-header {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background-color: #F2F2F2;
+	text-transform: uppercase;
+	font-size: 20px;
+	min-height: 42px;
+	padding: 6px;
+    padding-bottom: 16px;
+
+	> div {
+		min-width: 150px;
+	}
+
+	.pending-bookings-count{
+		color: #E0635D;
+	}
+	.management-extra-actions {
+		display: flex;		
+		gap: 12px;
+		text-transform: none;
+
+		.add-booking {
+			cursor: pointer;
+			.fa-plus-circle {
+				color: #61B329;
+			}
+			&:hover {
+				span {
+					text-decoration: underline;
+				}
+			}
+		}
+		.import-bookings {
+			cursor: pointer;
+			.fa {
+				color: #4ea8f0;
+			}
+			&:hover {
+				span {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.booking-manager-calendar-wrap {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 12px;
+
+		label {
+			margin-bottom: 0;
+		}
+		
+		input {
+			text-align: center;
+			margin-left: 12px;
+			width: 170px;
+		}
+	}	
+}

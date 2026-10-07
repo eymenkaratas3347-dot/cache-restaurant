@@ -1,0 +1,217 @@
+<?php
+
+use Transbank\Plugin\Helpers\InfoUtil;
+use Transbank\Plugin\Helpers\WoocommerceInfoUtil;
+use Transbank\WooCommerce\WebpayRest\Utils\Template;
+
+if (!defined('ABSPATH')) {
+    return;
+}
+
+$summary = InfoUtil::getSummary();
+$eSummary = WoocommerceInfoUtil::getSummary();
+$connectionTests = [
+    [
+        'productKey' => 'webpay',
+        'actionName' => 'check_connection',
+        'title' => 'Prueba de conexión Webpay Plus',
+        'description' => 'Esta prueba usará el entorno y las credenciales configuradas actualmente para Webpay Plus y enviará una solicitud de transacción de prueba para validar la comunicación con Transbank.',
+    ],
+    [
+        'productKey' => 'oneclick',
+        'actionName' => 'check_connection',
+        'title' => 'Prueba de conexión Webpay Oneclick',
+        'description' => 'Esta prueba usará el entorno y las credenciales configuradas actualmente para Webpay Oneclick y enviará una solicitud de inscripción de prueba para validar la comunicación con Transbank.',
+    ],
+];
+$template = new Template();
+?>
+
+<div id="transbank_rest_info" class="">
+    <div class="transbank_rest_tool tbk-diagnostic-tool">
+        <div class="tbk-diagnostic-hero">
+            <div class="tbk-diagnostic-hero-copy">
+                <h3 class="tbk-diagnostic-title">Pruebas de conexión</h3>
+                <p class="tbk-diagnostic-description">
+                    Esta sección agrupará las pruebas de conexión de Webpay Plus y Webpay Oneclick.
+                </p>
+            </div>
+            <div class="tbk-diagnostic-note">
+                Si la prueba presenta problemas, revisa también la pestaña de registros (logs) para obtener más detalle.
+            </div>
+        </div>
+
+        <?php foreach ($connectionTests as $connectionTest) : ?>
+            <?php $template->render('admin/components/connection-test-card.php', [
+                'connectionTest' => $connectionTest,
+            ]); ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="transbank_rest_tool">
+        <h3 class="tbk_title_h3">Información de Plugin / Ambiente</h3>
+        <div class="tbk-plugin-info-container">
+            <div class="info-column-plugin">
+                <div title="Nombre del E-commerce instalado en el servidor"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Software E-commerce: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="software_ecommerce">
+                    <?php echo $eSummary['ecommerce']; ?>
+                </span>
+            </div>
+            <div class="info-column-plugin">
+                <div title="Versión de <?php echo $eSummary['ecommerce']; ?> instalada en el servidor"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Version E-commerce: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="version_ecommerce">
+                    <?php echo $eSummary['currentEcommerceVersion']; ?>
+                </span>
+            </div>
+            <div class="info-column-plugin">
+                <div title="Versión del plugin Webpay para <?php echo $eSummary['ecommerce']; ?> instalada actualmente"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Versión actual del plugin: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="current_version_plugin">
+                    <?php echo $eSummary['currentPluginVersion']; ?>
+                </span>
+            </div>
+            <div class="info-column-plugin">
+                <div title="Última versión del plugin Webpay para <?php echo $eSummary['ecommerce']; ?> disponible"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Última versión del plugin: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="last_version_available">
+                    <?php echo $eSummary['lastPluginVersion']; ?>
+                </span>
+            </div>
+        </div>
+        <hr>
+        <h3 class="tbk_title_h3">Estado de la Extensiones de PHP</h3>
+        <h4 class="tbk_table_title">Información Principal</h4>
+        <div class="tbk-plugin-info-container">
+            <div class="info-column-plugin">
+                <div title="Descripción del Servidor Web instalado"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Software Servidor: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="software_server">
+                    <?php echo $summary['server']; ?>
+                </span>
+            </div>
+            <div class="info-column-plugin">
+                <div title="Informa si la versión de PHP instalada en el servidor es compatible con el plugin de Webpay"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Estado de PHP: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label
+                   <?php if ($summary['php']['status'] == 'OK') {
+                        echo 'label-success';
+                    } else {
+                        echo 'label-danger';
+                    } ?>"><?php echo $summary['php']['status']; ?>
+                </span>
+            </div>
+            <div class="info-column-plugin">
+                <div title="Versión de PHP instalada en el servidor"
+                    class="label label-info">?
+                </div>
+            </div>
+            <div class="info-column-plugin">
+                <span class="highlight-text"> Versión: </span>
+            </div>
+            <div class="info-column-plugin">
+                <span class="label" id="php_version">
+                    <?php echo $summary['php']['version']; ?>
+                </span>
+            </div>
+
+        </div>
+        <hr>
+        <h4 class="tbk_table_title">Extensiones PHP requeridas</h4>
+        <table class="tbk_table_info">
+            <caption style="display: none">Tabla con el resumen de las extensiones de PHP requeridas</caption>
+            <tr>
+                <th>Extensión</th>
+                <th>Estado</th>
+                <th class="tbk_table_td">Versión</th>
+            </tr>
+            <tr>
+                <td style="font-weight:bold">json</td>
+                <td>
+                    <span class="label
+                            <?php if ($summary['phpExtensions']['json']['status'] == 'OK') {
+                                echo 'label-success';
+                            } else {
+                                echo 'label-danger';
+                            } ?>">
+                        <?php echo $summary['phpExtensions']['json']['status']; ?>
+                    </span>
+                </td>
+                <td class="tbk_table_td">
+                    <?php echo $summary['phpExtensions']['json']['version']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold">dom</td>
+                <td>
+                    <span class="label
+                            <?php if ($summary['phpExtensions']['dom']['status'] == 'OK') {
+                                echo 'label-success';
+                            } else {
+                                echo 'label-danger';
+                            } ?>">
+                        <?php echo $summary['phpExtensions']['dom']['status']; ?>
+                    </span>
+                </td>
+                <td class="tbk_table_td">
+                    <?php echo $summary['phpExtensions']['dom']['version']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold">curl</td>
+                <td>
+                    <span class="label
+                        <?php if ($summary['phpExtensions']['curl']['status'] == 'OK') {
+                            echo 'label-success';
+                        } else {
+                            echo 'label-danger';
+                        } ?>">
+                        <?php echo $summary['phpExtensions']['curl']['status']; ?>
+                    </span>
+                </td>
+                <td class="tbk_table_td">
+                    <?php echo $summary['phpExtensions']['curl']['version']; ?>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
